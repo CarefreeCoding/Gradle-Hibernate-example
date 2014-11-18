@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    // for hibernate to work
+    compile("org.hibernate:hibernate-core:4.3.7.Final")
+    // to be able to connect to mysql
+    compile("mysql:mysql-connector-java:5.1.6")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}
+
